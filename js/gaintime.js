@@ -79,19 +79,17 @@ function makeA(e) {
     });
   }
   
+  // Barra de progresso -- sugestão de barbgluz para melhorar acessibilidade
   function bar(e) {
+    e.setAttribute("role", "progressbar"),e.setAttribute("aria-valuenow", e.dataset.percentage),e.setAttribute("aria-valuemin", "0"),e.setAttribute("aria-valuemax", "100")
     var t = document.createElement("div");
-    t.setAttribute("class", "percentage " + e.dataset.color),
-      t.setAttribute("style", "width: " + e.dataset.percentage);
-    var n = document.createTextNode(e.dataset.text);
-    if ("undefined" != n.data) {
-      var a = document.createElement("span");
-      a.appendChild(n),
-        (a.style.padding = "0 10px"),
-        t.appendChild(a),
-        (e.style.height = "20px");
+    t.setAttribute("class", "percentage " + e.dataset.color), t.setAttribute("style", "width: " + e.dataset.percentage + '%' );
+    var o = document.createTextNode(e.dataset.text);
+    if ("undefined" != o.data) {
+      var n = document.createElement("span");
+      n.appendChild(o), n.style.padding = "0 10px", t.appendChild(n), e.style.height = "20px"
     }
-    e.appendChild(t);
+    e.appendChild(t)
   }
   
   function tooltip(e) {
