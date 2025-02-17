@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Financeiro</title>
+    <link rel="stylesheet" href="../../css/gaintime.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="../../js/gaintime.js"></script>
+    <link rel="stylesheet" href="./styles.css">
+</head>
+
+<body>
+    <div class="sidebar">
+        <h2>Menu</h2>
+        <ul>
+            <li onclick="showPage('financeiro')">Financeiro</li>
+            <li onclick="showPage('funcionarios1')">Funcionários</li>
+        </ul>
+    </div>
+
+    <div class="main-content">
+        <div id="financeiro" class="page-content active">
+            <div class="dashboard-container">
+                <h1>Financeiro</h1>
+                <div class="transactions-list">
+                    <h2>Transações Recentes</h2>
+                    <table class="gt-table ">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Descrição</th>
+                                <th>Valor</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody id="transactionsTable">
+                        </tbody>
+                    </table>
+                    <button class="btn success outline" onclick="addTransaction()">Adicionar Transação</button>
+                </div>
+
+                <div class="progress-bar-chart">
+                    <h2>Status Financeiro</h2>
+                    <div class="progress-bars">
+                        <div class="progress-item">
+                            <label for="progress1">Receita</label>
+                            <div class="bar" data-percentage="50%" data-color="success" data-tooltip="Test" data-text="20% do total"></div>
+                        </div>
+                        <div class="progress-item">
+                            <label for="progress2">Despesa</label>
+                            <div class="bar" data-percentage="30%" data-color="danger" data-tooltip="30% concluído" data-text="30%"></div>
+                        </div>
+                        <div class="progress-item">
+                            <label for="progress3">Intermediários</label>
+                            <div class="bar" data-percentage="80%" data-color="warning" data-tooltip="80% concluído" data-text="80%"></div>
+                        </div>
+                    </div>
+                    <button class="btn info outline" onclick="updateProgress()">Atualizar Status</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="funcionarios1" class="page-content">
+            <div class="dashboard-container">
+                <h1>Funcionários</h1>
+                <div class="transactions-list">
+                    <h2>Lista de Funcionários</h2>
+                    <table class="gt-table gt-hoverable">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Nome</th>
+                                <th>Cargo</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody id="funcionariosTable1">
+                            <tr>
+                                <td>1</td>
+                                <td>João Silva</td>
+                                <td>Analista Financeiro</td>
+                                <td><span class="gt-tag gt-success">Ativo</span></td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>Maria Oliveira</td>
+                                <td>Gerente de Projetos</td>
+                                <td><span class="gt-tag gt-success">Ativo</span></td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>Carlos Souza</td>
+                                <td>Assistente Administrativo</td>
+                                <td><span class="gt-tag gt-danger">Inativo</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <button class="btn success outline" onclick="addEmployee()">Adicionar Funcionário</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const transactions = [
+            { id: 1, description: "Compra de Equipamento", value: 500, status: "Pendente" },
+            { id: 2, description: "Pagamento de Fornecedor", value: 1200, status: "Pago" },
+            { id: 3, description: "Recebimento de Cliente", value: 800, status: "Pago" },
+            { id: 4, description: "Taxa de Serviço", value: 300, status: "Pendente" },
+        ];
+
+        const transactionsTable = document.getElementById('transactionsTable');
+        transactions.forEach(transaction => {
+            const row = document.createElement('tr');
+            row.innerHTML = `
+                <td>${transaction.id}</td>
+                <td>${transaction.description}</td>
+                <td>R$ ${transaction.value}</td>
+                <td><span class="gt-tag ${transaction.status === 'Pago' ? 'gt-success' : 'gt-warning'}">${transaction.status}</span></td>
+            `;
+            transactionsTable.appendChild(row);
+        });
+
+        function showPage(pageId) {
+            const pages = document.querySelectorAll('.page-content');
+            pages.forEach(page => page.classList.remove('active'));
+            document.getElementById(pageId).classList.add('active');
+        }
+
+        function addTransaction() {
+            alert('Função para adicionar transação ainda não implementada.');
+        }
+
+        function updateProgress() {
+            alert('Função para atualizar status financeiro ainda não implementada.');
+        }
+
+        function addEmployee() {
+            alert('Função para adicionar funcionário ainda não implementada.');
+        }
+    </script>
+</body>
+
+</html>
