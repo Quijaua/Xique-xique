@@ -4,7 +4,6 @@
   "description": "Xique Xique é um framework de HTML, CSS e JS para desenvolvimento de projetos responsivos, focado na simplicidade.",
   "main": "css/xique-xique.css",
   "repository": {
-
     "type": "git",
     "url": "git+https://github.com/Quijaua/Xique-xique.git"
   },
@@ -22,5 +21,9 @@
   "bugs": {
     "url": "https://github.com/Quijaua/Xique-xique/issues"
   },
-  "homepage": "https://github.com/Quijaua/Xique-xique"
+  "homepage": "https://github.com/Quijaua/Xique-xique",
+  "devDependencies": {
+    "clean-css-cli": "^5.6.3",
+    "uglify-js": "^3.19.3"
+  }
 }

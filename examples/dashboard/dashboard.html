@@ -4,141 +4,300 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard Financeiro</title>
+    <title>Xique Xique - Relatório Financeiro</title>
     <link rel="stylesheet" href="../../css/gaintime.css">
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="../../js/gaintime.js"></script>
-    <link rel="stylesheet" href="./styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 
-<body>
-    <div class="sidebar">
-        <h2>Menu</h2>
-        <ul>
-            <li onclick="showPage('financeiro')">Financeiro</li>
-            <li onclick="showPage('funcionarios1')">Funcionários</li>
-        </ul>
-    </div>
+<body class="scrollable-y full bg-light">
+    <nav class="gt-top-menu bg-primary shadow">
+        <div class="row justify-between">
+            <h3 class="color-light no-margin">
+                <i class="fas fa-seedling margin-r"></i>
+                Xique Xique
+            </h3>
+            <a href="https://github.com/Quijaua/Xique-xique" target="_blank" class="btn bg-dark color-light border-none rounded">
+                <i class="fab fa-github margin-r"></i>
+                Ver no GitHub
+            </a>
+        </div>
+    </nav>
 
-    <div class="main-content">
-        <div id="financeiro" class="page-content active">
-            <div class="dashboard-container">
-                <h1>Financeiro</h1>
-                <div class="transactions-list">
-                    <h2>Transações Recentes</h2>
-                    <table class="gt-table ">
+    <main class="content padding">
+        <div class="container border-none">
+            <div class="row justify-between">
+                <div class="w-full">
+                    <div class="card rounded shadow-lg hover-lift margin">
+                        <div class="card-content padding">
+                            <div class="row align-items-center justify-between">
+                                <div class="col-3">
+                                    <div class="icon-circle bg-success color-light rounded-circle shadow">
+                                        <i class="fas fa-chart-line"></i>
+                                    </div>
+                                </div>
+                                <div class="col-9 text-right">
+                                    <h3 class="color-dark no-margin-bottom margin-top-half">Receita Total</h3>
+                                    <h2 class="color-success margin-y-half">R$ 25.000,00</h2>
+                                    <small class="color-success"><i class="fas fa-arrow-up margin-r"></i>+15% este mês</small>
+                                    <div class="margin-top">
+                                        <div class="bar bg-light rounded-lg">
+                                            <div class="progress bg-success rounded-lg" style="width: 50%;"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="w-full">
+                    <div class="card bg-white rounded shadow-lg hover-lift margin">
+                        <div class="card-content padding">
+                            <div class="row align-items-center justify-between">
+                                <div class="col-3">
+                                    <div class="icon-circle bg-error color-light rounded-circle shadow">
+                                        <i class="fas fa-chart-area"></i>
+                                    </div>
+                                </div>
+                                <div class="col-9 text-right">
+                                    <h3 class="color-dark no-margin-bottom margin-top-half">Despesa Total</h3>
+                                    <h2 class="color-error margin-y-half">R$ 15.000,00</h2>
+                                    <small class="color-error"><i class="fas fa-arrow-down margin-r"></i>-5% este mês</small>
+                                    <div class="margin-top">
+                                        <div class="bar bg-light rounded-lg">
+                                            <div class="progress bg-error rounded-lg" style="width: 30%;"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="w-full">
+                    <div class="card bg-white rounded shadow-lg hover-lift margin">
+                        <div class="card-content padding">
+                            <div class="row align-items-center justify-between">
+                                <div class="col-3">
+                                    <div class="icon-circle bg-primary color-light rounded-circle shadow">
+                                        <i class="fas fa-wallet"></i>
+                                    </div>
+                                </div>
+                                <div class="col-9 text-right">
+                                    <h3 class="color-dark no-margin-bottom margin-top-half">Saldo</h3>
+                                    <h2 class="color-primary margin-y-half">R$ 10.000,00</h2>
+                                    <small class="color-secondary">Balanço atual</small>
+                                    <div class="margin-top">
+                                        <div class="bar bg-light rounded-lg">
+                                            <div class="progress bg-primary rounded-lg" style="width: 40%;"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container border-none">
+            <div class="card bg-white rounded-lg shadow-lg">
+                <div class="card-header padding bg-primary">
+                    <div class="row justify-between align-items-center">
+                        <h2 class="color-light no-margin"><i class="fas fa-exchange-alt margin-r"></i>Transações</h2>
+                        <button class="btn bg-light color-primary rounded-lg shadow" data-modal="transactionModal">
+                            <i class="fas fa-plus margin-r"></i>Nova Transação
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="table-responsive">
+                    <table class="gt-table gt-hoverable border-none">
                         <thead>
-                            <tr>
-                                <th>ID</th>
-                                <th>Descrição</th>
-                                <th>Valor</th>
-                                <th>Status</th>
+                            <tr class="bg-dark">
+                                <th class="padding rounded-top-left color-light text-center" width="8%">TIPO</th>
+                                <th class="padding color-light text-center" width="20%">VALOR</th>
+                                <th class="padding color-light text-center" width="20%">MÉTODO DE PAGAMENTO</th>
+                                <th class="padding color-light text-center" width="12%">STATUS</th>
+                                <th class="padding color-light text-center" width="20%">ATIVIDADE</th>
+                                <th class="padding rounded-top-right color-light text-center" width="20%">PESSOA</th>
                             </tr>
                         </thead>
                         <tbody id="transactionsTable">
                         </tbody>
                     </table>
-                    <button class="btn success outline" onclick="addTransaction()">Adicionar Transação</button>
                 </div>
+            </div>
+        </div>
 
-                <div class="progress-bar-chart">
-                    <h2>Status Financeiro</h2>
-                    <div class="progress-bars">
-                        <div class="progress-item">
-                            <label for="progress1">Receita</label>
-                            <div class="bar" data-percentage="50%" data-color="success" data-tooltip="Test" data-text="20% do total"></div>
+        <div id="transactionModal" class="gt-modal">
+            <div class="gt-modal-content bg-white rounded shadow-lg">
+                <div class="gt-modal-header padding bg-primary">
+                    <h3 class="color-light no-margin"><i class="fas fa-plus-circle margin-r"></i>Nova Transação</h3>
+                    <span class="gt-modal-close">&times;</span>
+                </div>
+                <div class="gt-modal-body padding">
+                    <div class="form-group">
+                        <label class="form-label">Descrição</label>
+                        <input type="text" class="form-control" placeholder="Ex: Pagamento de Fornecedor">
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col-6">
+                            <div class="form-group">
+                                <label class="form-label">Valor</label>
+                                <input type="number" class="form-control" placeholder="R$ 0,00">
+                            </div>
                         </div>
-                        <div class="progress-item">
-                            <label for="progress2">Despesa</label>
-                            <div class="bar" data-percentage="30%" data-color="danger" data-tooltip="30% concluído" data-text="30%"></div>
-                        </div>
-                        <div class="progress-item">
-                            <label for="progress3">Intermediários</label>
-                            <div class="bar" data-percentage="80%" data-color="warning" data-tooltip="80% concluído" data-text="80%"></div>
+                        <div class="col-6">
+                            <div class="form-group">
+                                <label class="form-label">Tipo</label>
+                                <select class="form-control">
+                                    <option value="expense">Despesa</option>
+                                    <option value="income">Receita</option>
+                                </select>
+                            </div>
                         </div>
                     </div>
-                    <button class="btn info outline" onclick="updateProgress()">Atualizar Status</button>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Status</label>
+                        <select class="form-control">
+                            <option value="Pendente">Pendente</option>
+                            <option value="Pago">Pago</option>
+                            <option value="Cancelado">Cancelado</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Data</label>
+                        <input type="date" class="form-control">
+                    </div>
+                </div>
+                <div class="gt-modal-footer padding">
+                    <button class="btn success rounded" onclick="saveTransaction()">Salvar</button>
                 </div>
             </div>
         </div>
+    </main>
 
-        <div id="funcionarios1" class="page-content">
-            <div class="dashboard-container">
-                <h1>Funcionários</h1>
-                <div class="transactions-list">
-                    <h2>Lista de Funcionários</h2>
-                    <table class="gt-table gt-hoverable">
-                        <thead>
-                            <tr>
-                                <th>ID</th>
-                                <th>Nome</th>
-                                <th>Cargo</th>
-                                <th>Status</th>
-                            </tr>
-                        </thead>
-                        <tbody id="funcionariosTable1">
-                            <tr>
-                                <td>1</td>
-                                <td>João Silva</td>
-                                <td>Analista Financeiro</td>
-                                <td><span class="gt-tag gt-success">Ativo</span></td>
-                            </tr>
-                            <tr>
-                                <td>2</td>
-                                <td>Maria Oliveira</td>
-                                <td>Gerente de Projetos</td>
-                                <td><span class="gt-tag gt-success">Ativo</span></td>
-                            </tr>
-                            <tr>
-                                <td>3</td>
-                                <td>Carlos Souza</td>
-                                <td>Assistente Administrativo</td>
-                                <td><span class="gt-tag gt-danger">Inativo</span></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <button class="btn success outline" onclick="addEmployee()">Adicionar Funcionário</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
+    <script src="../../js/gaintime.js"></script>
+    <script src="../../js/theme.js"></script>
     <script>
         const transactions = [
-            { id: 1, description: "Compra de Equipamento", value: 500, status: "Pendente" },
-            { id: 2, description: "Pagamento de Fornecedor", value: 1200, status: "Pago" },
-            { id: 3, description: "Recebimento de Cliente", value: 800, status: "Pago" },
-            { id: 4, description: "Taxa de Serviço", value: 300, status: "Pendente" },
+            { 
+                id: 1, 
+                type: "sent", 
+                description: "Compra de Equipamento", 
+                value: -500, 
+                method: "Cartão de Crédito",
+                methodDetails: "**** 6969",
+                status: "Pendente", 
+                activity: "Enviando pagamento para Fornecedor X",
+                person: "Fornecedor X",
+                date: "28/07/2023 15:40"
+            },
+            { 
+                id: 2, 
+                type: "sent", 
+                description: "Pagamento de Fornecedor", 
+                value: -1200, 
+                method: "Transferência Bancária",
+                methodDetails: "*** 8570",
+                status: "Pago", 
+                activity: "Enviando pagamento para Fornecedor Y",
+                person: "Fornecedor Y",
+                date: "28/07/2023 14:25"
+            },
+            { 
+                id: 3, 
+                type: "received", 
+                description: "Recebimento de Cliente", 
+                value: 800, 
+                method: "Transferência Bancária",
+                methodDetails: "*** 9624",
+                status: "Pago", 
+                activity: "Recebimento de pagamento do Cliente Z",
+                person: "Cliente Z",
+                date: "27/07/2023 11:30"
+            },
+            { 
+                id: 4, 
+                type: "received", 
+                description: "Venda de Produto", 
+                value: 300, 
+                method: "PayPal",
+                methodDetails: "@contaEmpresa",
+                status: "Pago", 
+                activity: "Pagamento por produto",
+                person: "Cliente W",
+                date: "27/07/2023 10:15"
+            },
+            {
+                id: 5,
+                type: "sent",
+                description: "Pagamento de Serviço",
+                value: -250,
+                method: "Cartão de Débito",
+                methodDetails: "**** 3342",
+                status: "Falhou",
+                activity: "Pagamento de serviço para Prestador B",
+                person: "Prestador B",
+                date: "26/07/2023 09:20"
+            }
         ];
 
-        const transactionsTable = document.getElementById('transactionsTable');
-        transactions.forEach(transaction => {
-            const row = document.createElement('tr');
-            row.innerHTML = `
-                <td>${transaction.id}</td>
-                <td>${transaction.description}</td>
-                <td>R$ ${transaction.value}</td>
-                <td><span class="gt-tag ${transaction.status === 'Pago' ? 'gt-success' : 'gt-warning'}">${transaction.status}</span></td>
-            `;
-            transactionsTable.appendChild(row);
+        document.addEventListener('DOMContentLoaded', function() {
+            // Inicializa o gerenciador de tema
+            const themeManager = new ThemeManager();
+            themeManager.loadTheme();
+            
+            // Popula a tabela de transações
+            const transactionsTable = document.getElementById('transactionsTable');
+            
+            transactions.forEach(transaction => {
+                const row = document.createElement('tr');
+                row.classList.add('hover-lighten', 'border-bottom-light');
+                
+                row.innerHTML = `
+                    <td align="center" valign="middle">
+                        <div class="icon-circle ${transaction.type === 'received' ? 'bg-success' : 'bg-error'} color-light rounded-circle shadow-sm" style="width: 40px; height: 40px;">
+                            <i class="fas fa-${transaction.type === 'received' ? 'arrow-down' : 'arrow-up'}"></i>
+                        </div>
+                    </td>
+                    <td align="center" valign="middle">
+                        <div class="margin-y-half">
+                            <div class="font-medium ${transaction.value > 0 ? 'color-success' : 'color-error'}">
+                                ${transaction.value > 0 ? '+' : ''}R$ ${Math.abs(transaction.value).toFixed(2)}
+                            </div>
+                            <div class="color-secondary font-small">${transaction.description}</div>
+                        </div>
+                    </td>
+                    <td align="center" valign="middle">
+                        <div class="margin-y-half">
+                            <div class="font-medium">${transaction.method}</div>
+                            <div class="color-secondary font-small">${transaction.methodDetails}</div>
+                        </div>
+                    </td>
+                    <td align="center" valign="middle">
+                        <span class="gt-tag padding justify-center row bg-${transaction.status === 'Pago' ? 'success' : transaction.status === 'Falhou' ? 'error' : 'warning'} color-light rounded-lg shadow-sm">
+                            ${transaction.status}
+                        </span>
+                    </td>
+                    <td align="center" valign="middle">${transaction.activity}</td>
+                    <td align="center" valign="middle">
+                        <div class="flex align-items-center justify-center">
+                            <span>${transaction.person}</span>
+                        </div>
+                    </td>
+                `;
+                transactionsTable.appendChild(row);
+            });
         });
 
-        function showPage(pageId) {
-            const pages = document.querySelectorAll('.page-content');
-            pages.forEach(page => page.classList.remove('active'));
-            document.getElementById(pageId).classList.add('active');
-        }
-
-        function addTransaction() {
-            alert('Função para adicionar transação ainda não implementada.');
-        }
-
-        function updateProgress() {
-            alert('Função para atualizar status financeiro ainda não implementada.');
-        }
-
-        function addEmployee() {
-            alert('Função para adicionar funcionário ainda não implementada.');
+        function saveTransaction() {
+            closeModal('transactionModal');
+            alert('Transação salva com sucesso!');
         }
     </script>
 </body>

@@ -588,3 +588,47 @@ function makeA(e) {
       });
     });
   
+  // Modal functions
+  function openModal(modalId) {
+    document.getElementById(modalId).classList.add('show');
+    document.body.style.overflow = 'hidden'; // Previne rolagem do body
+  }
+  
+  function closeModal(modalId) {
+    document.getElementById(modalId).classList.remove('show');
+    document.body.style.overflow = ''; // Restaura rolagem do body
+  }
+  
+  // Inicializa todos os modais da página
+  document.addEventListener('DOMContentLoaded', function() {
+    // Setup para botões que abrem modais
+    const modalTriggers = document.querySelectorAll('[data-modal]');
+    modalTriggers.forEach(trigger => {
+      trigger.addEventListener('click', function() {
+        const modalId = this.getAttribute('data-modal');
+        openModal(modalId);
+      });
+    });
+    
+    // Setup para botões que fecham modais
+    const closeButtons = document.querySelectorAll('.gt-modal-close');
+    closeButtons.forEach(button => {
+      button.addEventListener('click', function() {
+        const modal = this.closest('.gt-modal');
+        modal.classList.remove('show');
+        document.body.style.overflow = '';
+      });
+    });
+    
+    // Fechar modal ao clicar fora
+    const modals = document.querySelectorAll('.gt-modal');
+    modals.forEach(modal => {
+      modal.addEventListener('click', function(event) {
+        if (event.target === this) {
+          this.classList.remove('show');
+          document.body.style.overflow = '';
+        }
+      });
+    });
+  });
+  
