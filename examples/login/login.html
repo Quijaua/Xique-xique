@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="../../css/gaintime.css">
+    <link rel="stylesheet" href="./styles.css">
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="../../js/gaintime.js"></script>
+</head>
+
+<body>
+    <!-- Informativo fora da div do login -->
+    <div class="inform"
+        style="width: 30%; margin-bottom: 20px; background-color: #e7f4ff; color: #2196f3; padding: 15px; border-radius: 8px; text-align: center;">
+        <button type="button" class="close" aria-label="Close"></button>
+        <p>Para o login, use o email: <strong>teste@teste.com</strong> e a senha: <strong>entrar123</strong>.</p>
+    </div>
+
+    <div class="form center padding border flex-box"
+        style="display: flex; flex-direction: column; align-items: center; border-radius: 10px; padding: 20px; width: 500px;">
+        <h2>Login</h2>
+
+        <!-- Formulário de Login -->
+        <form action="/examples/dashboard/dashboard.html" method="POST" class="form">
+            <div class="input-group">
+                <input type="email" class="input" name="email" placeholder="Email" required value="teste@teste.com">
+            </div>
+            <div class="input-group">
+                <input type="password" class="input" name="password" placeholder="Senha" required value="entrar123">
+            </div>
+            <!-- Botão de login -->
+            <button type="submit" class="btn success center" style="width: 100%; padding: 10px; text-align: center;">
+                Entrar
+            </button>
+        </form>
+        <div class="forgot-password" style="margin-top: 10px;">
+            <a href="#">Esqueceu a senha?</a>
+        </div>
+    </div>
+
+</body>
+
+</html>
